@@ -1,8 +1,9 @@
 git --version       版本
+git init                                                初始化本地仓库
 git config --global user.name "  "      设置分支的用户名
 git config --global user.email "  "         邮箱
-git remote add origin git@github.com:https://github.com/idea15/DECfenci       远程仓库
-git remote add origin git@github.com:idea15/DECfenci.git                                 远程仓库
+git remote add origin git@github.com:idea15/DECfenci.git      远程仓库
+git remote add origin git@github.com:idea15/DECfenci.git      远程仓库
 git add readme.txt                               从工作区添加文件到暂存区                                                                
 git commit -m "wrote a readme file"            从版本库的暂存区提交文件到分支（默认master）
 pwd                     输出现在的路径
@@ -32,10 +33,12 @@ git checkout -- file                  当你改乱了工作区某个文件的内
 场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
 
 删除文件：
-
+rm -rf .git                  强行删除本地仓
 vi test.txt                  新建文件并编辑
-rm test.txt                从工作区删除文件
-git rm test.txt           从暂存区删除文件      从版本库中删除该文件   +git commit -m "remove test.txt"         文件就从版本库中被删除了
+rm test.txt                从工作区删除文档
+git rm -r --cached 文件名         从暂存区删除文件
+git rm test.txt           从暂存区删除文件      从版本库中删除该文件   
++git commit -m "remove test.txt"         文件就从版本库中被删除了
 git checkout -- test.txt     另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本
 git checkout -- file           其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”
 注意：从来没有被添加到版本库就被删除的文件，是无法恢复的！
@@ -54,8 +57,8 @@ $ git remote add origin git@github.com:账户名/仓库名.git        本地仓�
 $ git remote add origin https://github.com/账户名/仓库名.git
 
 git pull --rebase origin master                                               远程库非空库，有本地库没有的文件时，需要把这些文件同步到本地库
-git push -u origin master                                                       把本地库的所有内容推送到远程库上
 git clone https://github.com/wu347771769/gitskills.git        把远程库克隆到本地（本地和远程库同步）
+git push -u origin master                                                       把本地库的所有内容推送到远程库上
 git remote remove origin                                                       取消和本地远程库的关联
 小结
 要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
@@ -67,3 +70,14 @@ git remote remove origin                                                       �
 从远程库克隆
 
 git clone git@github.com:michaelliao/gitskills.git                      远程库先准备好，用命令git clone克隆一个本地库（也可以使用https://github.com/michaelliao/gitskills.git这样的地址）
+
+
+
+分支管理：
+
+
+$ git checkout -b dev                   创建dev分支，然后切换到dev分支
+相当于：
+$ git branch dev                           创建dev分支
+$ git checkout dev                        切换到dev分支
+git branch                                     查看当前分支
